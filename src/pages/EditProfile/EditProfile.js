@@ -16,6 +16,7 @@ import { Redirect } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: { backgroundColor: "grey" },
   card: { textAlign: "justified", maxWidth: 700, margin: "auto" },
+  edited: { color: "red" },
 }));
 
 const fetchMyUser = async () => {
@@ -29,6 +30,8 @@ const fetchMyUser = async () => {
 
 const EditProfile = memo(() => {
   const [edited, setEdited] = useState(false);
+  const [able, setAble] = useState(false);
+  const [scape, setScape] = useState(false);
   const [alert, setAlert] = useState(false);
   const [user, setUser] = useState("");
   const [name, setName] = useState("");
@@ -36,32 +39,40 @@ const EditProfile = memo(() => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   useEffect(() => {
-    const getUser = async () => {
-      await fetchMyUser().then((a) => {
-        setUser(a);
-        setName(a.name);
-        setSurname(a.surname);
-        setEmail(a.email);
-        setPhone(a.phone);
-      });
-    };
-    getUser();
-  }, []);
-
-  console.log(user);
+    if (able === false) {
+      const getUser = async () => {
+        await fetchMyUser().then((a) => {
+          setUser(a);
+          setName(a.name);
+          setSurname(a.surname);
+          setEmail(a.email);
+          setPhone(a.phone);
+        });
+      };
+      getUser();
+    }
+  }, [able]);
 
   const classes = useStyles();
   const nameChangeHandler = (e) => {
     setName(e.target.value);
+    setEdited(false);
+    setAble(true);
   };
   const surnameChangeHandler = (e) => {
     setSurname(e.target.value);
+    setEdited(false);
+    setAble(true);
   };
   const emailChangeHandler = (e) => {
     setEmail(e.target.value);
+    setEdited(false);
+    setAble(true);
   };
   const phoneChangeHandler = (e) => {
     setPhone(e.target.value);
+    setEdited(false);
+    setAble(true);
   };
   const submitHandler = (e) => {
     e.preventDefault();
@@ -94,6 +105,7 @@ const EditProfile = memo(() => {
     })
       .then((response) => {
         setEdited(true);
+        setAble(false);
         return response.json();
       })
       .catch((error) => {
@@ -101,11 +113,11 @@ const EditProfile = memo(() => {
       });
   };
   const scapeHandler = () => {
-    setEdited(true);
+    setScape(true);
   };
   return (
     <main className={classes.root}>
-      {edited && <Redirect to="/profile" />}
+      {scape && <Redirect to="/profile" />}
       <Card className={classes.card}>
         <form onSubmit={submitHandler}>
           <CardHeader
@@ -180,11 +192,22 @@ const EditProfile = memo(() => {
                 <strong>{alert}</strong>
               </p>
             )}
+            {edited && (
+              <p className={classes.edited}>
+                <strong>Datos actualizados!</strong>
+              </p>
+            )}
           </CardContent>
           <CardActions>
-            <Button variant="outlined" color="primary" type="submit">
-              Confirmar
-            </Button>
+            {able ? (
+              <Button variant="outlined" color="primary" type="submit">
+                Confirmar
+              </Button>
+            ) : (
+              <Button variant="outlined" color="primary" type="submit" disabled>
+                Confirmar
+              </Button>
+            )}
             <Button
               variant="contained"
               color="secondary"
