@@ -113,4 +113,8 @@ const CreateTask = () => {
     );
 }
 
+CreateTask.defaultProps = {
+    imgPerfil: 'https://cdn.pixabay.com/photo/2017/04/26/09/00/avatar-5270037_960_720.png'
+}
+
 export default CreateTask
