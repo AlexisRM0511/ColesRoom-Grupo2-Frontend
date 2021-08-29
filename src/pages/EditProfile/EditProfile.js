@@ -277,7 +277,7 @@ const EditProfile = memo(() => {
                 color="secondary"
                 onClick={scapeHandler}
               >
-                Cancelar
+                Volver
               </Button>
             </CardActions>
           )}
