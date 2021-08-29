@@ -37,6 +37,7 @@ const CreateTask = () => {
             }).then(response => { return response.json() })
             let topic = sessionStorage.getItem("IDCourse")
             sessionStorage.removeItem("IDCourse")
+            alert("TAREA CREADA")
             history.push(`/mycourses/${topic}`);
         }
     }
