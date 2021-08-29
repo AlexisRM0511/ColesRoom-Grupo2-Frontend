@@ -129,6 +129,7 @@ const Register = () => {
        <Link to="/login"> ¿Ya tienes una cuenta? </Link>
      </div>
    </div>
+
         {
           logeado &&
           <Redirect to="/" />
@@ -158,6 +159,7 @@ const Register = () => {
           <Link to="/login"> ¿Ya tienes una cuenta? </Link>
         </div>
       </div>
+
       <Snackbar open={SBOpen} autoHideDuration={6000} onClose={closeSB}>
         <MuiAlert onClose={closeSB} severity="error" elevation={6} variant="filled">
           {error}

@@ -107,7 +107,9 @@ const CourseTitle = ({ name, description, date, backgroundImage, category, topic
         setediting(true)
     }
 
-    const handleCloseEditCourse = (ev) => {
+    const handleCloseEditCourse = (ev) => {        
+        setnewContent(description)
+        setnewTitle(name)
         setediting(false)
     }
 
@@ -148,7 +150,7 @@ const CourseTitle = ({ name, description, date, backgroundImage, category, topic
 
 
     const salirseCurso = async () => {
-        await fetch(`/user/deleteuser`, {
+        await fetch(`https://colesroomapp.herokuapp.com/user/deleteuser`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
