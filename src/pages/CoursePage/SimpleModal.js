@@ -33,6 +33,7 @@ export default function SimpleModal() {
   const validaremail = (e) => {
     var nom=  document.getElementById("email").value.replace(/\s+/g, '')
     if(nom===""){
+
       alert("Digite un email válido!!");
     }
   };

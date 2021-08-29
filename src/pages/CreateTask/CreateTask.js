@@ -4,21 +4,22 @@ import { Form, Button, FormControl } from 'react-bootstrap';
 import "./CreateTask.css"
 import { useHistory } from "react-router-dom";
 
-
+const validarCampos = (e) => {
+    var nom=  document.getElementById("nombre").value.replace(/\s+/g, '')
+    var ap=  document.getElementById("des").value.replace(/\s+/g, '')
+    if(nom===""||ap===""){
+      alert("Rellene todos los campos!!");
+    }
+  };
 const CreateTask = () => {
 
     const [date, setTime] = useState("")
     const [files, setFiles] = useState([]);
     const [filesID, setFilesID] = useState([]);
-    const validarCampos = (e) => {
-        var nom=  document.getElementById("nombre").value.replace(/\s+/g, '')
-        var ap=  document.getElementById("des").value.replace(/\s+/g, '')
-        if(nom===""||ap===""){
-          alert("Rellene todos los campos!!");
-        }
-      };
+    
     let history = useHistory();
     const CrearTarea = (e) => {
+        
         e.preventDefault();
         const form = e.target;
 
