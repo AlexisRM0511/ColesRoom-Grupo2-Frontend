@@ -6,8 +6,6 @@ import "./Login.css"
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../../redux/index.js'
-import { LocalConvenienceStoreOutlined } from '@material-ui/icons'
-
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 

@@ -5,7 +5,6 @@ import "../../utils.css"
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-import { SortByAlpha } from '@material-ui/icons';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 function getModalStyle() {
@@ -55,7 +54,6 @@ export default function SimpleModal() {
     }
 
   const handleOpen = () => {
-    //const [course, setCourse] = useState({})
     setOpen(true);
   };
   const addStudent = () => {

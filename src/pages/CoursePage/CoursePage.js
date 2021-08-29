@@ -18,8 +18,7 @@ const CoursePage = () => {
   let { topic } = useParams()
 
   const [publicaciones, setPublicaciones] = useState([])
-  const [course, setCourse] = useState({})
-  const [teacher, setTeacher] = useState({})
+  const [course, setCourse] = useState({})  
   const [activeAddPublication, setactiveAddPublication] = useState(false)
 
   const [snackbar, setSnackbar] = useState({type: 'success', message: '', open: false})
@@ -36,31 +35,18 @@ const CoursePage = () => {
       return res.json()
     }
   
-    const fetchTeacher = async (teacher_id) => {
-      const res = await fetch(`https://colesroomapp.herokuapp.com/teacher/${teacher_id}`)
-      return res.json()     
-    }
-
-
     const getPublications = async () => {
       const p = await fetchPublications()
       setPublicaciones(p)
     }
-
-    //Get the course user_id
-    const getTeacher = async (teacher_id) => {
-      const t = await fetchTeacher(teacher_id)
-      setTeacher(t)
-    }
-
+    
     const getCourse = async () => {
       const c = await fetchCourse()
-      getTeacher(c.user_id)
+      
       setCourse(c)
     }
 
     getPublications()
-    getTeacher()
     getCourse()
 
   }, [topic])

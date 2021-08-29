@@ -14,7 +14,6 @@ import Register from "./pages/Register/Register.js";
 import Header from "./components/Header/Header.js";
 import CreateCourse from "./pages/CreateCourse/CreateCourse.js";
 import CoursePage from "./pages/CoursePage/CoursePage.js";
-import Profile from "./pages/Profile/Profile.js";
 import EditProfile from "./pages/EditProfile/EditProfile.js";
 import MyCourses from "./pages/MyCourses/MyCourses.js";
 import CreateTask from "./pages/CreateTask/CreateTask.js";

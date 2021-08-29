@@ -5,11 +5,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 const validar = (e) => {
     var nom=  document.getElementById("filled-multiline-flexible").value.replace(/\s+/g, '')
-    if(nom===""){
-      return false
-    }else{
-        return true
-    }
+    return nom === ""
   };
 const PublicationInput = ({ handleCancel, handleSubmit, filesDefault, valueDefault, sendFiles }) => {
 
@@ -198,7 +194,9 @@ const PublicationInput = ({ handleCancel, handleSubmit, filesDefault, valueDefau
 PublicationInput.defaultProps = {
     filesDefault: [],
     valueDefault: '',
-    sendFiles: () => { },
+    sendFiles: () => {
+        // This is intentional
+     },
 }
 
 export default PublicationInput

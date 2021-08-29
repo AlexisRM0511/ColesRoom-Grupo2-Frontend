@@ -12,12 +12,9 @@ const validar = (e) => {
   var nom=  document.getElementById("nombre").value.replace(/\s+/g, '')
   var ap=  document.getElementById("des").value.replace(/\s+/g, '')
   if(nom===""||ap===""){
-    //alert("Rellene todos los campos!!");
     return false
-  }else{
-    return true
   }
-  
+  return true
 };
 
   const CreateCourse = (props) => {
@@ -59,9 +56,6 @@ const validar = (e) => {
         .then(res => res.json())
         .then(res => {
           setloading(false)
-          if (res) {
-
-          }
         })
         .catch(err => alert("Fallo al Registrar"));
         // aca

@@ -6,24 +6,24 @@ import { useHistory } from "react-router-dom";
 import { Alert } from "@material-ui/lab";
 
 const validarCampos = (e) => {
-    var nom=  document.getElementById("nombre").value.replace(/\s+/g, '')
-    var ap=  document.getElementById("des").value.replace(/\s+/g, '')
-    if(nom===""||ap===""){
-      alert("Rellene todos los campos!!");
+    var nom = document.getElementById("nombre").value.replace(/\s+/g, '')
+    var ap = document.getElementById("des").value.replace(/\s+/g, '')
+    if (nom === "" || ap === "") {
+        alert("Rellene todos los campos!!");
     }
-  };
+};
 
 const CreateTask = () => {
 
     const [date, setTime] = useState("")
-    const [filesid,setfilesid] = useState([])
+    const [filesid, setfilesid] = useState([])
 
     const [camposInvalidos, setcamposInvalidos] = useState(false)
 
     let history = useHistory();
 
     const CrearTarea = (e) => {
-        
+
         e.preventDefault();
         const form = e.target;
         const data = {
@@ -72,15 +72,11 @@ const CreateTask = () => {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
-                }).then(response => { return response.json() })
-                    .then(json => {
-                        if (json) {
-                            setfilesid([json.fileID])
-                        }
-                    })
-                    .catch(error => {
-                        console.log('Error: ' + error)
-                    })
+                }).then(response => {
+                    setfilesid(response.json().fileID)
+                }).catch(error => {
+                    console.log('Error: ' + error)
+                })
             }
         }
     }
