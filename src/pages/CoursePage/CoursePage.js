@@ -30,7 +30,7 @@ const CoursePage = () => {
       const res = await fetch(`https://colesroomapp.herokuapp.com/api/publications/${topic}`)
       return res.json()
     }
-  
+    //Cambiar GET a POST
     const fetchCourse = async () => {
       const res = await fetch(`https://colesroomapp.herokuapp.com/api/courses/${topic}`)
       return res.json()
