@@ -41,7 +41,7 @@ const Header = ({ user }) => {
         }
     }
 
-    const registrar = (e) => {
+    const registrar = () => {
         history.push("/mycourses/crear")
     }
 
